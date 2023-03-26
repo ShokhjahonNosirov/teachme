@@ -6,20 +6,38 @@ from . import models
 @admin.register(models.Story)
 class StoryAdmin(admin.ModelAdmin):
     list_display = [
-        'text',
+        'img1',
+        'text1',
+        'img2',
+        'text2',
+        'img3',
+        'text3',
+        'audio_link'
     ]
 
 @admin.register(models.Course)
 class CourseAdmin(admin.ModelAdmin):
     list_display = [
         'name',
+        'course_image',
+        'about'
     ]
 
 @admin.register(models.Post)
 class PostAdmin(admin.ModelAdmin):
     list_display = [
         'title',
+        'video1',
+        'title1',
+        'video2',
+        'title2',
+        'video3',
+        'title3',
+        'video4',
+        'title4',
         'text',
+        'course',
+        'story_post'
     ]
 
 

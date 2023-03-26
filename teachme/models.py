@@ -3,21 +3,36 @@ from django.db import models
 
 
 class Story(models.Model): #start, finish storylar bo'lsa o'zi
-    text = models.TextField()
+    img1 = models.CharField(max_length=255)
+    text1 = models.CharField(max_length=255)
+    img2 = models.CharField(max_length=255, blank=True, null=True)
+    text2 = models.CharField(max_length=255, blank=True, null=True)
+    img3 = models.CharField(max_length=255, blank=True, null=True)
+    text3 = models.CharField(max_length=255, blank=True, null=True)
+    audio_link = models.CharField(max_length=255)
 
 
 class Course(models.Model):
     name = models.CharField(max_length=255)
-
+    course_image = models.CharField(max_length=255)
+    about = models.TextField()
     def __str__(self):
         return self.name
 
 
 class Post(models.Model):
     title = models.CharField(max_length=255)
-    #video
+    video1 = models.CharField(max_length=255)
+    title1 = models.CharField(max_length=255)
+    video2 = models.CharField(max_length=255, blank=True, null=True)
+    title2 = models.CharField(max_length=255, blank=True, null=True)
+    video3 = models.CharField(max_length=255, blank=True, null=True)
+    title3 = models.CharField(max_length=255, blank=True, null=True)
+    video4 = models.CharField(max_length=255, blank=True, null=True)
+    title4 = models.CharField(max_length=255, blank=True, null=True)
     text = models.TextField()
     course = models.ForeignKey(Course, default=1, on_delete=models.CASCADE)
+    story_post = models.ForeignKey(Story, default=1, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
