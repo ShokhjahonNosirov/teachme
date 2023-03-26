@@ -3,6 +3,7 @@ from django.db import models
 
 
 class Story(models.Model): #start, finish storylar bo'lsa o'zi
+    story_name = models.CharField(max_length=255)
     img1 = models.CharField(max_length=255)
     text1 = models.CharField(max_length=255)
     img2 = models.CharField(max_length=255, blank=True, null=True)
@@ -10,6 +11,8 @@ class Story(models.Model): #start, finish storylar bo'lsa o'zi
     img3 = models.CharField(max_length=255, blank=True, null=True)
     text3 = models.CharField(max_length=255, blank=True, null=True)
     audio_link = models.CharField(max_length=255)
+    def __str__(self):
+        return self.story_name
 
 
 class Course(models.Model):

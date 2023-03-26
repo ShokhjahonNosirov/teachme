@@ -6,6 +6,7 @@ from . import models
 @admin.register(models.Story)
 class StoryAdmin(admin.ModelAdmin):
     list_display = [
+        'story_name',
         'img1',
         'text1',
         'img2',
