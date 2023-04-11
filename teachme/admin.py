@@ -7,13 +7,7 @@ from . import models
 class StoryAdmin(admin.ModelAdmin):
     list_display = [
         'story_name',
-        'img1',
-        'text1',
-        'img2',
-        'text2',
-        'img3',
-        'text3',
-        'audio_link'
+        'video'
     ]
 
 @admin.register(models.Course)
