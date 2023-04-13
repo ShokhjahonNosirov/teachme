@@ -4,7 +4,10 @@ from django.db import models
 
 class Story(models.Model): #start, finish storylar bo'lsa o'zi
     story_name = models.CharField(max_length=255, default="story_name")
-    video = models.FileField(upload_to="media", null= True)
+    video = models.CharField(max_length=255, default="video_link")
+
+    def __str__(self):
+        return self.story_name
 
 
 class Course(models.Model):
@@ -27,7 +30,7 @@ class Post(models.Model):
     title4 = models.CharField(max_length=255, blank=True, null=True)
     text = models.TextField()
     course = models.ForeignKey(Course, default=1, on_delete=models.CASCADE)
-    story_post = models.ForeignKey(Story, default=1, on_delete=models.CASCADE)
+    story_post = models.OneToOneField(Story, default=1, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.title
@@ -51,3 +54,4 @@ class Answer(models.Model):
 
     def __str__(self):
         return self.answer_text
+
