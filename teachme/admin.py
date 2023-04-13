@@ -18,7 +18,7 @@ class CourseAdmin(admin.ModelAdmin):
         'about'
     ]
 
-@admin.register(models.Post)
+@admin.register(models.Lesson)
 class PostAdmin(admin.ModelAdmin):
     list_display = [
         'title',

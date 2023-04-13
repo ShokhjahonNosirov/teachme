@@ -18,7 +18,7 @@ class Course(models.Model):
         return self.name
 
 
-class Post(models.Model):
+class Lesson(models.Model):
     title = models.CharField(max_length=255)
     video1 = models.CharField(max_length=255)
     title1 = models.CharField(max_length=255)
@@ -37,7 +37,7 @@ class Post(models.Model):
 
 
 class Question(models.Model):
-    post = models.ForeignKey(Post, related_name='question', on_delete=models.CASCADE)
+    post = models.ForeignKey(Lesson, related_name='question', on_delete=models.CASCADE)
     title = models.CharField(max_length=255, verbose_name="Title")
 
     def __str__(self):
