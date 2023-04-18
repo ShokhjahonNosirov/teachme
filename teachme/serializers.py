@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from .models import Course, Lesson, Answer, Question
 
-
 class StorySerializer(serializers.ModelSerializer):
     story_post_video = serializers.CharField(source='story_post.video')
     class Meta:
