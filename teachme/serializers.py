@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Course, Lesson, Story
+from .models import Course, Lesson, Answer, Question
 
 
 class StorySerializer(serializers.ModelSerializer):
@@ -11,7 +11,7 @@ class StorySerializer(serializers.ModelSerializer):
         ]
 
 class CourseSerializer(serializers.ModelSerializer):
-    # category_name = serializers.CharField(source='category.name')
+    # category_name = serializers.CharField(source='ca   tegory.name')
 
     class Meta:
         model = Course
@@ -34,3 +34,21 @@ class Course_Lesson_Serializer(serializers.ModelSerializer):
 
 
 
+class AnswerSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Answer
+        fields = [
+            'id',
+            'answer_text',
+            'is_right',
+        ]
+
+
+class QuestionSerializer(serializers.ModelSerializer):
+    answer = AnswerSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Question
+        fields = [
+            'title', 'answer',
+        ]

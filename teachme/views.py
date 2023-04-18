@@ -1,8 +1,8 @@
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from .models import Course, Lesson
-from .serializers import CourseSerializer, Course_Lesson_Serializer, StorySerializer
+from .models import Course, Lesson, Question
+from .serializers import CourseSerializer, Course_Lesson_Serializer, StorySerializer, QuestionSerializer
 
 
 class HomeView(generics.ListAPIView):
@@ -31,3 +31,9 @@ class CourseLessonView(APIView):
         serializer = Course_Lesson_Serializer(course, many=True)
         return Response(serializer.data)
 
+class QuizQuestionView(APIView):
+
+    def get(self, request, format=None, **kwargs):
+        quiz = Question.objects.filter(post__title=kwargs['slug'])
+        serializer = QuestionSerializer(quiz, many=True)
+        return Response(serializer.data)
