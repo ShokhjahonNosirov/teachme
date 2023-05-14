@@ -65,3 +65,12 @@ class AnswerAdmin(admin.ModelAdmin):
         'is_right',
         'question'
     ]
+
+@admin.register(models.Profile)
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = [
+        'created_by',
+        'first_name',
+        'last_name',
+        'saved_courses'
+    ]

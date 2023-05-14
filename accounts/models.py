@@ -8,3 +8,6 @@ from django.conf import settings
 def create_auth_token(sender, instance=None, created=False, **kwargs):
     if created:
         Token.objects.create(user=instance)
+
+
+

@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from rest_framework import serializers
+from teachme.models import Profile
 
 
 class UserRegisterSerializer(serializers.ModelSerializer):
@@ -27,3 +28,15 @@ class UserRegisterSerializer(serializers.ModelSerializer):
         account.save()
 
         return account
+
+class Profile_Serializer(serializers.ModelSerializer):
+    saved_courses = serializers.CharField(source='saved_courses.name')
+    created_by = serializers.CharField(source='created_by.username')
+    # It was used to make string name the pk of course
+    # story_post_name = serializers.CharField(source='story_post.story_name')
+
+    class Meta:
+        model = Profile
+        fields = [
+            'created_by', 'first_name', 'last_name', 'saved_courses'
+        ]

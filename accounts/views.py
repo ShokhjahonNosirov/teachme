@@ -5,7 +5,10 @@ from rest_framework import status
 from rest_framework.authtoken.models import Token
 from .serializers import UserRegisterSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
-
+from rest_framework.views import APIView
+from .serializers import Profile_Serializer
+from teachme.models import Profile
+from rest_framework.permissions import IsAuthenticated
 
 @api_view(["POST", ])
 def logout_user(request):
@@ -39,3 +42,11 @@ def user_register_view(request):
         else:
             data = serializer.errors
         return Response(data)
+
+
+class ProfileView(APIView):
+    permission_classes = [IsAuthenticated]
+    def get(self, request, format=None, **kwargs):
+        profile = Profile.objects.all()
+        serializer = Profile_Serializer(profile, many=True)
+        return Response(serializer.data)
