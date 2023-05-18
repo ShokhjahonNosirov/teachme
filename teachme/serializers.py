@@ -9,6 +9,15 @@ class StorySerializer(serializers.ModelSerializer):
             'story_post_video'
         ]
 
+class AllStoriesSerializer (serializers.ModelSerializer):
+    story_post_video = serializers.CharField(source='story_post.video')
+    class Meta:
+        model = Lesson
+        fields = [
+            'story_post_video'
+        ]
+
+
 class CourseSerializer(serializers.ModelSerializer):
     # category_name = serializers.CharField(source='ca   tegory.name')
 

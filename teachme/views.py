@@ -2,7 +2,7 @@ from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .models import Course, Lesson, Question
-from .serializers import CourseSerializer, Course_Lesson_Serializer, StorySerializer, QuestionSerializer
+from .serializers import CourseSerializer, Course_Lesson_Serializer, StorySerializer, QuestionSerializer, AllStoriesSerializer
 
 
 class HomeView(generics.ListAPIView):
@@ -21,6 +21,12 @@ class StoryView(APIView):
     def get(self, request, format=None, **kwargs):
         video = Lesson.objects.filter(course__name=kwargs['course_name'], story_post__story_name=kwargs['slug'])
         serializer = StorySerializer(video, many=True)
+        return Response(serializer.data)
+
+class AllStoriesView(APIView):
+    def get(self, request, format=None, **kwargs):
+        video = Lesson.objects.filter(course__name=kwargs['course_name'])
+        serializer = AllStoriesSerializer(video, many=True)
         return Response(serializer.data)
 
 

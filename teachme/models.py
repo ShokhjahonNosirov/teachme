@@ -57,8 +57,8 @@ class Answer(models.Model):
         return self.answer_text
 
 
-class Profile(models.Model):
-    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255)
-    saved_courses = models.ForeignKey(Course, on_delete=models.CASCADE)
+# class Profile(models.Model):
+#     created_by = models.ForeignKey(User, on_delete=models.CASCADE)
+#     first_name = models.CharField(max_length=255)
+#     last_name = models.CharField(max_length=255)
+#     saved_courses = models.ForeignKey(Course, on_delete=models.CASCADE)
